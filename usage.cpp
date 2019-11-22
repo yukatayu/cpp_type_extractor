@@ -18,8 +18,7 @@
 template<class A, class B, class C>
 struct TestStruct { };
 
-int main()
-{
+int main() {
     using namespace std;
 
     std::cout << "using test_t = TestStruct <int, char&, float&&>;\n" << std::endl;

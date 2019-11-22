@@ -20,7 +20,7 @@ template<class U, class... Args>
 struct extract_idx_getter<0, U, Args...>{ using type = U; };
 
 template<unsigned int i, template<class...> class U, class... Args>
-auto extract_idx_impl(const U<Args...>&) -> extract_idx_getter<i, Args...>;
+auto extract_idx_impl(const U<Args...>&) -> typename std::enable_if<(i<sizeof...(Args)), extract_idx_getter<i, Args...>>::type;
 
 template<unsigned int i, class U>
 using extract_idx = typename decltype(extract_idx_impl<i>(std::declval<U>()))::type;
